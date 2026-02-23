@@ -95,4 +95,38 @@
   @page {
     margin: 0.5in;
   }
+  /* Force light mode colors in print regardless of theme */
+  .dark {
+    background-color: white !important;
+    color: #18181b !important;
+  }
+  .dark * {
+    color: inherit !important;
+    background-color: transparent !important;
+    border-color: #e4e4e7 !important;
+  }
+  .dark h1, .dark h2, .dark h3 {
+    color: #18181b !important;
+  }
+  .dark .text-amber-600,
+  .dark .text-amber-400 {
+    color: #b45309 !important;
+  }
+  .dark .text-zinc-400,
+  .dark .text-zinc-500 {
+    color: #71717a !important;
+  }
+  .dark .text-zinc-300,
+  .dark .text-zinc-600 {
+    color: #52525b !important;
+  }
+  .dark .bg-amber-400\/10 {
+    background-color: #fef3c7 !important;
+  }
+  .dark .text-amber-700 {
+    color: #b45309 !important;
+  }
+  .dark .border-amber-400 {
+    border-color: #fbbf24 !important;
+  }
 }
