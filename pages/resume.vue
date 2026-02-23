@@ -52,7 +52,7 @@
 
     <!-- Two-column grid -->
     <div class="grid grid-cols-1 md:grid-cols-5 gap-8 print:grid-cols-5 print:gap-4">
-      <!-- Left column: Experience + Education -->
+      <!-- Left column: Experience -->
       <div class="md:col-span-3 space-y-8 print:col-span-3 print:space-y-4">
         <!-- Experience -->
         <section v-if="resume.work?.length">
@@ -74,23 +74,9 @@
             </div>
           </div>
         </section>
-
-        <!-- Education -->
-        <section v-if="resume.education?.length">
-          <h2 class="text-lg font-bold text-amber-600 dark:text-amber-400 border-l-2 border-amber-400 pl-3 mb-4 print:text-zinc-800 print:border-zinc-400 print:mb-2">Education</h2>
-          <div class="space-y-3 print:space-y-1">
-            <div v-for="edu in resume.education" :key="`${edu.institution}-${edu.area}`" class="flex justify-between items-start gap-4">
-              <div>
-                <h3 class="font-semibold text-zinc-900 dark:text-zinc-100">{{ edu.studyType }}, {{ edu.area }}</h3>
-                <p class="text-zinc-500 dark:text-zinc-400 text-sm">{{ edu.institution }}</p>
-              </div>
-              <span class="text-sm text-zinc-400 dark:text-zinc-500 whitespace-nowrap">{{ formatMonthYear(edu.endDate) }}</span>
-            </div>
-          </div>
-        </section>
       </div>
 
-      <!-- Right column: Skills + Certifications -->
+      <!-- Right column: Skills + Certifications + Education -->
       <div class="md:col-span-2 space-y-8 print:col-span-2 print:space-y-4">
         <!-- Skills -->
         <section v-if="resume.skills?.length">
@@ -119,6 +105,19 @@
               <p class="font-medium text-sm text-zinc-900 dark:text-zinc-100">{{ cert.name }}</p>
               <p class="text-xs text-zinc-500 dark:text-zinc-400">
                 {{ cert.issuer }}<span v-if="cert.date"> &middot; {{ formatMonthYear(cert.date) }}</span>
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Education -->
+        <section v-if="resume.education?.length">
+          <h2 class="text-lg font-bold text-amber-600 dark:text-amber-400 border-l-2 border-amber-400 pl-3 mb-4 print:text-zinc-800 print:border-zinc-400 print:mb-2">Education</h2>
+          <div class="space-y-3 print:space-y-1">
+            <div v-for="edu in resume.education" :key="`${edu.institution}-${edu.area}`">
+              <h3 class="font-semibold text-zinc-900 dark:text-zinc-100">{{ edu.studyType }}, {{ edu.area }}</h3>
+              <p class="text-zinc-500 dark:text-zinc-400 text-sm">
+                {{ edu.institution }}<span v-if="edu.endDate"> &middot; {{ formatMonthYear(edu.endDate) }}</span>
               </p>
             </div>
           </div>
