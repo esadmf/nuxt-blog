@@ -2,7 +2,7 @@ services:
   blog:
     build: .
     ports:
-      - "${PORT:-3000}:3000"
+      - "${HOST_PORT:-3000}:3000"
     volumes:
       # Mount your content directory so posts can be added without rebuilding.
       # On Proxmox, change ./content to an absolute path on the host, e.g.:
