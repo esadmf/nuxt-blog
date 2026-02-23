@@ -8,6 +8,8 @@ services:
       # On Proxmox, change ./content to an absolute path on the host, e.g.:
       #   /opt/blog/content:/app/content
       - ./content:/app/content
+    env_file:
+      - .env
     environment:
       - NODE_ENV=production
       - CONTENT_DIR=/app/content

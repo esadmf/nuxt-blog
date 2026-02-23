@@ -24,7 +24,9 @@ The dev server starts at `http://localhost:3000`.
 
 ## Configuration
 
-All site identity is in one place — the `site` object in `nuxt.config.ts`:
+### Local development
+
+For local development, edit the `site` object in `nuxt.config.ts` directly:
 
 ```ts
 runtimeConfig: {
@@ -40,7 +42,26 @@ runtimeConfig: {
 },
 ```
 
-Your name, URL, description, and social links propagate to the nav, footer, OG meta tags, and RSS feed automatically. Leave `github` or `linkedin` empty to hide those icons.
+### Production (Docker)
+
+For production, use a `.env` file so your config survives `git pull` without conflicts:
+
+```bash
+cp .env.example .env
+# Edit .env with your values
+```
+
+The `.env` file is gitignored, so it won't be overwritten. Environment variables override the defaults in `nuxt.config.ts` at runtime:
+
+| Variable | Description |
+|---|---|
+| `NUXT_PUBLIC_SITE_NAME` | Your name (nav, footer, OG tags) |
+| `NUXT_PUBLIC_SITE_URL` | Site URL (OG tags, RSS feed) |
+| `NUXT_PUBLIC_SITE_DESCRIPTION` | Site description (meta tags, RSS) |
+| `NUXT_PUBLIC_SITE_GITHUB` | GitHub username (projects page, footer icon) |
+| `NUXT_PUBLIC_SITE_LINKEDIN` | LinkedIn slug (footer icon) |
+
+Leave `GITHUB` or `LINKEDIN` empty to hide those icons.
 
 ## Content
 
@@ -74,20 +95,27 @@ All content changes take effect immediately — no rebuild required.
 ### Docker (recommended)
 
 ```bash
+cp .env.example .env
+# Edit .env with your values
 docker compose up --build -d
 ```
 
-This builds the app and starts it on port 3000. The `content/` directory is mounted as a volume, so you can update content without rebuilding:
+This builds the app and starts it on port 3000. Your site config comes from `.env` and content is mounted as a volume — both survive `git pull` and rebuilds.
+
+To update content without rebuilding:
 
 ```bash
 scp my-new-post.md user@your-server:/path/to/content/blog/
 ```
 
-To rebuild after changing code (Vue/TypeScript files):
+To pull code updates and rebuild:
 
 ```bash
+git pull
 docker compose up --build -d
 ```
+
+Your `.env` and `content/` directory are not tracked by git, so they won't be overwritten.
 
 ### Node.js
 
