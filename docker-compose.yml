@@ -1,0 +1,14 @@
+services:
+  blog:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      # Mount your content directory so posts can be added without rebuilding.
+      # On Proxmox, change ./content to an absolute path on the host, e.g.:
+      #   /opt/blog/content:/app/content
+      - ./content:/app/content
+    environment:
+      - NODE_ENV=production
+      - CONTENT_DIR=/app/content
+    restart: unless-stopped

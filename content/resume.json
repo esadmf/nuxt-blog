@@ -1,0 +1,78 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Jane Developer",
+    "label": "Full-Stack Engineer",
+    "email": "jane@example.com",
+    "url": "https://example.com",
+    "summary": "Experienced software engineer with a passion for building clean, performant web applications. Skilled in modern JavaScript frameworks, cloud infrastructure, and developer tooling.",
+    "location": {
+      "city": "Portland",
+      "region": "Oregon",
+      "countryCode": "US"
+    },
+    "profiles": []
+  },
+  "work": [
+    {
+      "name": "Acme Corp",
+      "position": "Senior Software Engineer",
+      "location": "Portland, OR",
+      "startDate": "2021-03",
+      "summary": "Led the migration of a monolithic Rails application to a microservices architecture using Node.js and Kubernetes. Mentored junior developers and established code review standards across the team."
+    },
+    {
+      "name": "StartupCo",
+      "position": "Software Engineer",
+      "location": "San Francisco, CA",
+      "startDate": "2018-06",
+      "endDate": "2021-02",
+      "summary": "Built and maintained customer-facing features for a SaaS platform serving 50,000 users. Implemented CI/CD pipelines and reduced deployment time by 70%."
+    },
+    {
+      "name": "WebAgency",
+      "position": "Junior Developer",
+      "location": "Seattle, WA",
+      "startDate": "2016-01",
+      "endDate": "2018-05",
+      "summary": "Developed responsive websites and web applications for clients across various industries. Gained experience with modern frontend frameworks and RESTful API design."
+    }
+  ],
+  "education": [
+    {
+      "institution": "University of Washington",
+      "area": "Computer Science",
+      "studyType": "Bachelor of Science",
+      "endDate": "2015-12"
+    }
+  ],
+  "certificates": [
+    {
+      "name": "AWS Solutions Architect Associate",
+      "issuer": "Amazon Web Services",
+      "date": "2023-06"
+    },
+    {
+      "name": "Certified Kubernetes Administrator",
+      "issuer": "CNCF",
+      "date": "2022-11"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Frontend",
+      "level": "Advanced",
+      "keywords": ["Vue.js", "Nuxt", "React", "TypeScript", "Tailwind CSS", "HTML/CSS"]
+    },
+    {
+      "name": "Backend",
+      "level": "Advanced",
+      "keywords": ["Node.js", "Python", "PostgreSQL", "Redis", "REST APIs", "GraphQL"]
+    },
+    {
+      "name": "DevOps & Cloud",
+      "level": "Intermediate",
+      "keywords": ["AWS", "Docker", "Kubernetes", "GitHub Actions", "Terraform", "Linux"]
+    }
+  ]
+}

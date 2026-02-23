@@ -1,0 +1,28 @@
+# Dependencies
+node_modules/
+
+# Nuxt build output
+.nuxt/
+.output/
+dist/
+
+# Environment files
+.env
+.env.*
+
+# Claude Code
+.claude/
+
+# Reactive Resume exports
+reactive_resume-*.json
+
+# OS files
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
