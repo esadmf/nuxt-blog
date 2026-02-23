@@ -12,6 +12,7 @@ dist/
 
 # Claude Code
 .claude/
+CLAUDE.md
 
 # Reactive Resume exports
 reactive_resume-*.json
