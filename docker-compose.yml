@@ -13,4 +13,5 @@ services:
     environment:
       - NODE_ENV=production
       - CONTENT_DIR=/app/content
+      - TZ=America/Denver
     restart: unless-stopped
