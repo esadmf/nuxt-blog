@@ -44,7 +44,7 @@ export function getAllPosts(): PostMeta[] {
       return {
         slug,
         title: data.title ?? slug,
-        date: data.date ? String(data.date) : '',
+        date: data.date instanceof Date ? data.date.toISOString().slice(0, 10) : String(data.date ?? ''),
         description: data.description ?? '',
         tags: Array.isArray(data.tags) ? data.tags : [],
       }
@@ -60,7 +60,7 @@ export function getPost(slug: string): Post | null {
   return {
     slug,
     title: data.title ?? slug,
-    date: data.date ? String(data.date) : '',
+    date: data.date instanceof Date ? data.date.toISOString().slice(0, 10) : String(data.date ?? ''),
     description: data.description ?? '',
     tags: Array.isArray(data.tags) ? data.tags : [],
     content: marked.parse(content) as string,
