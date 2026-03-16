@@ -16,6 +16,17 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
   css: ['~/assets/css/main.css'],
+  routeRules: {
+    '/**': {
+      headers: {
+        'X-Frame-Options': 'DENY',
+        'X-Content-Type-Options': 'nosniff',
+        'Referrer-Policy': 'strict-origin-when-cross-origin',
+        'Permissions-Policy': 'camera=(), microphone=(), geolocation=()',
+        'Content-Security-Policy': "default-src 'self'; script-src 'self' 'unsafe-inline' https://analytics.esadmf.com; connect-src 'self' https://analytics.esadmf.com; img-src 'self' data:; style-src 'self' 'unsafe-inline'; frame-ancestors 'none';",
+      },
+    },
+  },
   app: {
     head: {
       link: [

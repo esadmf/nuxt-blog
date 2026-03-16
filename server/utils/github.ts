@@ -21,8 +21,9 @@ export async function getProjects(username: string): Promise<Project[]> {
   try {
     const projects: Project[] = []
     let page = 1
+    const MAX_PAGES = 10
 
-    while (true) {
+    while (page <= MAX_PAGES) {
       const repos: any[] = await $fetch(
         `https://api.github.com/users/${username}/starred`,
         {

@@ -4,6 +4,7 @@ import matter from 'gray-matter'
 import { marked } from 'marked'
 import { markedHighlight } from 'marked-highlight'
 import hljs from 'highlight.js'
+import DOMPurify from 'isomorphic-dompurify'
 
 marked.use(
   markedHighlight({
@@ -53,7 +54,9 @@ export function getAllPosts(): PostMeta[] {
 }
 
 export function getPost(slug: string): Post | null {
-  const file = path.join(contentDir(), 'blog', `${slug}.md`)
+  const base = path.resolve(contentDir(), 'blog')
+  const file = path.resolve(base, `${slug}.md`)
+  if (!file.startsWith(base + path.sep)) return null
   if (!fs.existsSync(file)) return null
 
   const { data, content } = matter(fs.readFileSync(file, 'utf-8'))
@@ -63,7 +66,7 @@ export function getPost(slug: string): Post | null {
     date: data.date instanceof Date ? data.date.toISOString().slice(0, 10) : String(data.date ?? ''),
     description: data.description ?? '',
     tags: Array.isArray(data.tags) ? data.tags : [],
-    content: marked.parse(content) as string,
+    content: DOMPurify.sanitize(marked.parse(content) as string),
   }
 }
 
@@ -71,7 +74,7 @@ export function getAbout(): string {
   const file = path.join(contentDir(), 'about.md')
   if (!fs.existsSync(file)) return '<p>About page coming soon.</p>'
   const { content } = matter(fs.readFileSync(file, 'utf-8'))
-  return marked.parse(content) as string
+  return DOMPurify.sanitize(marked.parse(content) as string)
 }
 
 export function getResume() {

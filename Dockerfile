@@ -23,5 +23,10 @@ COPY --from=builder /app/.output ./output
 # Copy default content (overridden by volume mount in production)
 COPY --from=builder /app/content ./content
 
+# Run as non-root user for security
+RUN addgroup -S blog && adduser -S blog -G blog
+RUN chown -R blog:blog /app
+USER blog
+
 EXPOSE 3000
 CMD ["node", "output/server/index.mjs"]
