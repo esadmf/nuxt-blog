@@ -4,13 +4,26 @@
 
 @variant dark (&:where(.dark, .dark *));
 
+/* Animated gradient bar — single-hue blue */
+.gradient-bar {
+  background: linear-gradient(90deg, #3b82f6, #60a5fa, #3b82f6) !important;
+  background-size: 200% 100% !important;
+  animation: gradient-shift 6s ease infinite;
+  transition: none !important;
+}
+
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
 /* Custom fonts */
 body, h1, h2, h3, h4 {
   font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
 }
 
 h1, h2, h3, h4 {
-  letter-spacing: -0.02em;
+  letter-spacing: -0.04em;
 }
 
 /* Dark mode syntax highlighting (github-dark theme) */
@@ -93,11 +106,16 @@ h1, h2, h3, h4 {
 }
 
 /* Page transitions */
-.page-enter-active,
-.page-leave-active {
-  transition: opacity 0.15s ease;
+.page-enter-active {
+  transition: opacity 0.2s ease, transform 0.2s ease;
 }
-.page-enter-from,
+.page-leave-active {
+  transition: opacity 0.12s ease;
+}
+.page-enter-from {
+  opacity: 0;
+  transform: translateY(6px);
+}
 .page-leave-to {
   opacity: 0;
 }

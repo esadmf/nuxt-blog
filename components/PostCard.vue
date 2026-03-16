@@ -1,22 +1,22 @@
 <template>
-  <article class="group rounded-xl border border-zinc-150 dark:border-zinc-800 bg-white dark:bg-zinc-800/50 p-6 transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:shadow-zinc-200/50 dark:hover:shadow-zinc-900/50 hover:border-zinc-300 dark:hover:border-zinc-700">
-    <NuxtLink :to="`/blog/${post.slug}`">
-      <h2 class="text-xl font-semibold group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{{ post.title }}</h2>
+  <article class="group -mx-4 rounded-lg px-4 py-5 transition-[background-color,transform] duration-150 ease-[cubic-bezier(.2,.8,.2,1)] hover:bg-zinc-50 dark:hover:bg-zinc-800/60 hover:-translate-y-px">
+    <NuxtLink :to="`/blog/${post.slug}`" class="block">
+      <h2 class="text-lg font-semibold text-zinc-900 dark:text-zinc-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors duration-150">{{ post.title }}</h2>
+      <p v-if="post.description" class="mt-1.5 text-[13px] text-zinc-500 dark:text-zinc-400 leading-relaxed">{{ post.description }}</p>
     </NuxtLink>
-    <div class="flex flex-wrap items-center gap-3 text-sm text-zinc-500 dark:text-zinc-400 mt-2 mb-3">
+    <div class="flex flex-wrap items-center gap-2.5 mt-2.5 text-xs text-zinc-400 dark:text-zinc-500">
       <time>{{ formatDate(post.date) }}</time>
-      <span class="text-zinc-300 dark:text-zinc-600">&middot;</span>
+      <span>&middot;</span>
       <span>{{ post.readingTime }} min read</span>
-      <div class="flex flex-wrap gap-2">
+      <div class="flex flex-wrap gap-1.5">
         <NuxtLink
           v-for="tag in post.tags"
           :key="tag"
           :to="`/tags/${tag}`"
-          class="inline-flex items-center rounded-full bg-zinc-100 dark:bg-zinc-700/50 px-2.5 py-0.5 text-xs font-medium text-zinc-600 dark:text-zinc-300 hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+          class="rounded-full bg-zinc-100 dark:bg-zinc-800 px-2 py-0.5 text-zinc-500 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-150"
         >{{ tag }}</NuxtLink>
       </div>
     </div>
-    <p v-if="post.description" class="text-zinc-600 dark:text-zinc-400 text-sm leading-relaxed">{{ post.description }}</p>
   </article>
 </template>
 

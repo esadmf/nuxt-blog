@@ -1,10 +1,10 @@
 <template>
   <div>
-    <h1 class="text-2xl font-bold mb-1">
+    <h1 class="text-3xl font-extrabold tracking-tighter text-zinc-900 dark:text-zinc-50 mb-1">
       Posts tagged <span class="text-blue-600 dark:text-blue-400">#{{ route.params.tag }}</span>
     </h1>
     <NuxtLink to="/" class="text-sm text-zinc-500 dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-300 mb-8 inline-block">&larr; All posts</NuxtLink>
-    <div v-if="posts?.length" class="space-y-8 mt-6">
+    <div v-if="posts?.length" class="space-y-3 mt-6">
       <PostCard v-for="post in posts" :key="post.slug" :post="post" />
     </div>
     <p v-else class="text-zinc-500 dark:text-zinc-400 mt-6">No posts with this tag.</p>

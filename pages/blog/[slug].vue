@@ -1,21 +1,22 @@
 <template>
   <article v-if="post">
-    <div class="mb-8">
-      <h1 class="text-3xl font-bold mb-2">{{ post.title }}</h1>
-      <div class="flex flex-wrap items-center gap-3 text-sm text-zinc-500 dark:text-zinc-400">
+    <header class="mb-12">
+      <h1 class="text-3xl font-extrabold tracking-tighter text-zinc-900 dark:text-zinc-50 mb-4">{{ post.title }}</h1>
+      <div class="flex flex-wrap items-center gap-2.5 text-xs text-zinc-400 dark:text-zinc-500">
         <time>{{ formatDate(post.date) }}</time>
-        <span class="text-zinc-300 dark:text-zinc-600">&middot;</span>
+        <span>&middot;</span>
         <span>{{ post.readingTime }} min read</span>
-        <div class="flex flex-wrap gap-2">
+        <div class="flex flex-wrap gap-1.5">
           <NuxtLink
             v-for="tag in post.tags"
             :key="tag"
             :to="`/tags/${tag}`"
-            class="inline-flex items-center rounded-full bg-zinc-100 dark:bg-zinc-700/50 px-2.5 py-0.5 text-xs font-medium text-zinc-600 dark:text-zinc-300 hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+            class="rounded-full bg-zinc-100 dark:bg-zinc-800 px-2 py-0.5 text-zinc-500 dark:text-zinc-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors duration-150"
           >{{ tag }}</NuxtLink>
         </div>
       </div>
-    </div>
+      <div class="mt-6 h-px bg-zinc-100 dark:bg-zinc-800"></div>
+    </header>
     <div class="prose prose-zinc dark:prose-invert max-w-none" v-html="post.content" />
   </article>
 </template>

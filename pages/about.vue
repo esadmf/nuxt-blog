@@ -1,6 +1,6 @@
 <template>
   <article>
-    <h1 class="text-2xl font-bold mb-8">About</h1>
+    <h1 class="text-3xl font-extrabold tracking-tighter text-zinc-900 dark:text-zinc-50 mb-8">About</h1>
     <div class="prose prose-zinc dark:prose-invert max-w-none" v-html="about?.content" />
   </article>
 </template>

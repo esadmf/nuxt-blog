@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen flex flex-col bg-white dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 transition-colors">
-    <div class="h-1 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 print:hidden" aria-hidden="true"></div>
-    <header class="border-b border-zinc-200 dark:border-zinc-800 print:hidden">
+    <div class="h-1 gradient-bar print:hidden" aria-hidden="true"></div>
+    <header class="border-b border-zinc-100 dark:border-zinc-800/50 print:hidden">
       <nav class="max-w-3xl mx-auto px-4 py-4 flex items-center justify-between">
         <NuxtLink to="/" class="font-semibold text-lg tracking-tight">{{ site.name }}</NuxtLink>
         <div class="flex items-center gap-1 text-sm">

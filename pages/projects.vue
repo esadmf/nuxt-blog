@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1 class="text-2xl font-bold mb-8">Projects</h1>
+    <h1 class="text-3xl font-extrabold tracking-tighter text-zinc-900 dark:text-zinc-50 mb-8">Projects</h1>
     <div v-if="projects?.length" class="grid gap-4 sm:grid-cols-2">
       <a
         v-for="project in projects"
@@ -8,15 +8,15 @@
         :href="project.url"
         target="_blank"
         rel="noopener"
-        class="block rounded-lg border border-zinc-200 dark:border-zinc-700 p-4
-               hover:border-amber-400 dark:hover:border-amber-400 transition-colors"
+        class="block rounded-lg border border-zinc-100 dark:border-zinc-800 p-5
+               hover:bg-zinc-50 dark:hover:bg-zinc-800/60 hover:border-zinc-200 dark:hover:border-zinc-700 transition-[background-color,border-color,transform] duration-150 ease-[cubic-bezier(.2,.8,.2,1)] hover:-translate-y-px"
       >
         <h2 class="font-semibold text-zinc-900 dark:text-zinc-100">{{ project.name }}</h2>
         <p v-if="project.description" class="mt-1 text-sm text-zinc-600 dark:text-zinc-400 line-clamp-2">
           {{ project.description }}
         </p>
         <div class="mt-3 flex items-center gap-3 text-xs text-zinc-500 dark:text-zinc-400">
-          <span v-if="project.language" class="inline-flex items-center px-2 py-0.5 rounded-full bg-amber-400/10 text-amber-700 dark:text-amber-400">
+          <span v-if="project.language" class="inline-flex items-center px-2 py-0.5 rounded-full bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-400">
             {{ project.language }}
           </span>
           <span v-if="project.stargazerCount" class="flex items-center gap-1">
