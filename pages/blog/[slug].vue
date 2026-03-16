@@ -4,13 +4,15 @@
       <h1 class="text-3xl font-bold mb-2">{{ post.title }}</h1>
       <div class="flex flex-wrap items-center gap-3 text-sm text-zinc-500 dark:text-zinc-400">
         <time>{{ formatDate(post.date) }}</time>
-        <div class="flex gap-2">
+        <span class="text-zinc-300 dark:text-zinc-600">&middot;</span>
+        <span>{{ post.readingTime }} min read</span>
+        <div class="flex flex-wrap gap-2">
           <NuxtLink
             v-for="tag in post.tags"
             :key="tag"
             :to="`/tags/${tag}`"
-            class="text-blue-600 dark:text-blue-400 hover:underline"
-          >#{{ tag }}</NuxtLink>
+            class="inline-flex items-center rounded-full bg-zinc-100 dark:bg-zinc-700/50 px-2.5 py-0.5 text-xs font-medium text-zinc-600 dark:text-zinc-300 hover:bg-blue-100 dark:hover:bg-blue-900/30 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+          >{{ tag }}</NuxtLink>
         </div>
       </div>
     </div>

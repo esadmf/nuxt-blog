@@ -26,6 +26,7 @@ export interface PostMeta {
   date: string
   description: string
   tags: string[]
+  readingTime: number
 }
 
 export interface Post extends PostMeta {
@@ -41,13 +42,15 @@ export function getAllPosts(): PostMeta[] {
     .filter((f) => f.endsWith('.md'))
     .map((file) => {
       const slug = file.replace(/\.md$/, '')
-      const { data } = matter(fs.readFileSync(path.join(blogDir, file), 'utf-8'))
+      const { data, content } = matter(fs.readFileSync(path.join(blogDir, file), 'utf-8'))
+      const words = content.trim().split(/\s+/).length
       return {
         slug,
         title: data.title ?? slug,
         date: data.date instanceof Date ? data.date.toISOString().slice(0, 10) : String(data.date ?? ''),
         description: data.description ?? '',
         tags: Array.isArray(data.tags) ? data.tags : [],
+        readingTime: Math.max(1, Math.ceil(words / 200)),
       }
     })
     .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
@@ -60,12 +63,14 @@ export function getPost(slug: string): Post | null {
   if (!fs.existsSync(file)) return null
 
   const { data, content } = matter(fs.readFileSync(file, 'utf-8'))
+  const words = content.trim().split(/\s+/).length
   return {
     slug,
     title: data.title ?? slug,
     date: data.date instanceof Date ? data.date.toISOString().slice(0, 10) : String(data.date ?? ''),
     description: data.description ?? '',
     tags: Array.isArray(data.tags) ? data.tags : [],
+    readingTime: Math.max(1, Math.ceil(words / 200)),
     content: DOMPurify.sanitize(marked.parse(content) as string),
   }
 }

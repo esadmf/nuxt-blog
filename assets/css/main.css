@@ -4,6 +4,15 @@
 
 @variant dark (&:where(.dark, .dark *));
 
+/* Custom fonts */
+body, h1, h2, h3, h4 {
+  font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+}
+
+h1, h2, h3, h4 {
+  letter-spacing: -0.02em;
+}
+
 /* Dark mode syntax highlighting (github-dark theme) */
 .dark .hljs {
   color: #c9d1d9;
@@ -81,6 +90,26 @@
 .dark .hljs-deletion {
   color: #ffdcd7;
   background-color: #67060c;
+}
+
+/* Page transitions */
+.page-enter-active,
+.page-leave-active {
+  transition: opacity 0.15s ease;
+}
+.page-enter-from,
+.page-leave-to {
+  opacity: 0;
+}
+
+/* Fade transition for back-to-top button */
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.2s ease;
+}
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
 }
 
 /* Print styles for resume PDF export */
